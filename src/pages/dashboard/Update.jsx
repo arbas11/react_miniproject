@@ -8,10 +8,11 @@ import {
     Label,
     Form
 } from 'reactstrap';
+import { v4 as uuid } from 'uuid';
 
 
 const initialValue = {
-    id: (Math.random() * Date.now()),
+    id: uuid(),
     name: "",
     price: 0,
     stock: 0,
@@ -35,6 +36,7 @@ const UpdateForm = ({ data, setOpenModal, editedDataId }) => {
                 <Form onSubmit={handleSubmit}>
                     <>
                         {Object.keys(form).map((key, idx) => (
+                            key !== 'id' &&
                             <FormGroup key={idx}>
                                 <Label>{key}</Label>
                                 <Input

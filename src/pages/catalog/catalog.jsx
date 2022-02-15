@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import '../../App.css';
+import { v4 as uuid } from 'uuid';
 // import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Table } from 'reactstrap';
 
 const dummy = [
     {
-        "id": "323234342",
+        "id": uuid(),
         "name": "Baju",
         "price": 200000,
         "stock": 200,
@@ -12,7 +13,7 @@ const dummy = [
         "pict": "https://picsum.photos/200"
     },
     {
-        "id": "12121212",
+        "id": uuid(),
         "name": "Celana",
         "price": 100000,
         "stock": 400,
@@ -20,33 +21,9 @@ const dummy = [
         "pict": "https://picsum.photos/200"
     },
     {
-        "id": "12121212",
-        "name": "Celana",
-        "price": 100000,
-        "stock": 400,
-        "category": "pakaian",
-        "pict": "https://picsum.photos/200"
-    },
-    {
-        "id": "12121212",
-        "name": "Celana",
-        "price": 100000,
-        "stock": 400,
-        "category": "pakaian",
-        "pict": "https://picsum.photos/200"
-    },
-    {
-        "id": "12121212",
-        "name": "Celana",
-        "price": 100000,
-        "stock": 400,
-        "category": "pakaian",
-        "pict": "https://picsum.photos/200"
-    },
-    {
-        "id": "12121212",
-        "name": "Celana",
-        "price": 100000,
+        "id": uuid(),
+        "name": "jaket",
+        "price": 400000,
         "stock": 400,
         "category": "pakaian",
         "pict": "https://picsum.photos/200"

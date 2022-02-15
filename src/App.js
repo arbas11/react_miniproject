@@ -8,6 +8,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import AuthPages from './pages/auth/Auth';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
+          <Route path="/" element={<AuthPages />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="*" element={<Errorpage />} />

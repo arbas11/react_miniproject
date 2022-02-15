@@ -4,24 +4,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Modal, ModalBody, ModalHeader, Table } from 'reactstrap';
 import NewForm from "./create";
 import UpdateForm from "./Update"
+import { v4 as uuid } from 'uuid';
 
 const dummy = [
     {
-        "id": "323234342",
+        "id": uuid(),
         "name": "Baju",
         "price": 200000,
         "stock": 200,
         "category": "pakaian"
     },
     {
-        "id": "12121212",
+        "id": uuid(),
         "name": "Celana",
         "price": 100000,
         "stock": 400,
         "category": "pakaian"
     },
     {
-        "id": "3324239129",
+        "id": uuid(),
         "name": "jaket",
         "price": 400000,
         "stock": 400,
@@ -32,6 +33,7 @@ const dummy = [
 const header = Object.keys(dummy[0]);
 
 function Dashboard() {
+    const [isLogin, setIsLogin] = useState(false);
     const [data, setData] = useState([])
     const [openCreateModal, setOpenCreateModal] = useState(false);
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
