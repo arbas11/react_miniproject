@@ -9,6 +9,7 @@ import {
     Form
 } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
+import { updateProducts } from '../../service/product';
 
 
 const initialValue = {
@@ -18,18 +19,24 @@ const initialValue = {
     stock: 0,
     category: ""
 }
-const UpdateForm = ({ data, setOpenModal, editedDataId }) => {
+const UpdateForm = ({ data, setOpenModal, updatedDataId, setData }) => {
     const [form, setForm] = useState(initialValue);
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const editedData = data.map((row, index) => (row.id === editedDataId ? data[index] = form : { ...row }))
-        setForm(editedData)
-        setOpenModal(false)
+        const { code, msg, products } = await updateProducts(data, form, updatedDataId)
+        if (code === 200) {
+            setData(products)
+            setOpenModal(false)
+            alert(msg)
+        } else {
+            alert(msg)
+        }
     }
     useEffect(() => {
-        const editData = data.filter(v => v.id === editedDataId)[0]
+        const editData = data.rows.filter(v => v.id === updatedDataId)[0]
         setForm(editData)
-    }, [data, editedDataId])
+    }, [data, updatedDataId])
+
     return (
         <>
             <Row>

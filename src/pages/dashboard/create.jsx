@@ -9,20 +9,30 @@ import {
     Form
 } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
+import { createProducts } from '../../service/product';
 
+const num = Math.floor((Math.random() * 100000) + 1);
 const initialValue = {
     id: uuid(),
     name: "",
     price: 0,
     stock: 0,
-    category: ""
+    category: "",
+    pictureURL: `https://loremflickr.com/200/200/${num}`
 }
 const NewForm = ({ data, setOpenModal }) => {
     const [form, setForm] = useState(initialValue);
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        data.push(form);
-        setOpenModal(false);
+        const { code, msg, products } = await createProducts(data, form)
+        if (code === 200) {
+            setForm(products)
+            setOpenModal(false);
+            alert(msg)
+        } else {
+            alert(msg)
+        }
     }
 
     return (

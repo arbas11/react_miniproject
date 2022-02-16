@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { Button, Container, FormFeedback, Input } from 'reactstrap'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { authRegister } from '../../service/auth'
 
 const validationSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -10,8 +11,7 @@ const validationSchema = yup.object().shape({
     retypePassword: yup.string()
         .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
-
-const RegPages = () => {
+const RegPages = ({ setCurrentContainer }) => {
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -23,10 +23,15 @@ const RegPages = () => {
         onSubmit: () => handleRegister()
     });
 
-    const handleRegister = (e) => {
-        console.log(e)
+    const handleRegister = async (e) => {
+        const { code, msg } = await authRegister(formik.values)
+        if (code === 200) {
+            setCurrentContainer(false);
+            alert(msg)
+        } else {
+            alert(msg)
+        }
     }
-
     return (
         (<Container className="container-register">
             <div>Register</div>

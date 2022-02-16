@@ -1,0 +1,54 @@
+{
+  "data": {
+    "headers": [
+      "ID",
+      "name",
+      "price",
+      "stock",
+      "category",
+      "Action"
+    ],
+    "rows": [
+      {
+        "id": "dfdc89c1-e2c0-4c5d-9d5e-b1fcc62b94df",
+        "name": "jacket kulit buaya",
+        "price": "200000",
+        "stock": "300",
+        "category": "pakaian",
+        "pictureURL": "https://loremflickr.com/200/200/1"
+      },
+      {
+        "id": "4ca428c1-e13f-469e-acad-4c2dbd0429fc",
+        "name": "Women Dress",
+        "price": "250000",
+        "stock": "100",
+        "category": "pakaian",
+        "pictureURL": "https://loremflickr.com/200/200/2"
+      },
+      {
+        "id": "4a0e6d5d-07bc-4d33-b225-da9e89cfdf33",
+        "name": "Chino Pants",
+        "price": "350000",
+        "stock": 200,
+        "category": "pakaian",
+        "pictureURL": "https://loremflickr.com/200/200/3"
+      },
+      {
+        "id": "a7e36580-f3f4-4f6e-b86e-0a52f6bf501d",
+        "name": "shoes",
+        "price": "80000",
+        "stock": "20",
+        "category": "pakaian",
+        "pictureURL": "https://loremflickr.com/200/200/4"
+      },
+      {
+        "id": "1abeccf4-3494-4bdf-b486-d6c4a07a6532",
+        "name": "baju koko panjang",
+        "price": "275000",
+        "stock": "500",
+        "category": "pakaian muslim",
+        "pictureURL": "https://loremflickr.com/200/200/54733"
+      }
+    ]
+  }
+}

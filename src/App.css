@@ -1,8 +1,11 @@
 .App{
-  font-family: "Montserrat", sans-serif;
   color: #555;
+  font-family: 'Nunito', sans-serif;
 }
 
+.link-style{
+  text-decoration: none;
+}
 .header-container{
   background: #2ec2b0;
   padding:0;

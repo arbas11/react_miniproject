@@ -4,50 +4,43 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Modal, ModalBody, ModalHeader, Table } from 'reactstrap';
 import NewForm from "./create";
 import UpdateForm from "./Update"
-import { v4 as uuid } from 'uuid';
+import { deleteProducts, getProducts } from "../../service/product";
 
-const dummy = [
-    {
-        "id": uuid(),
-        "name": "Baju",
-        "price": 200000,
-        "stock": 200,
-        "category": "pakaian"
-    },
-    {
-        "id": uuid(),
-        "name": "Celana",
-        "price": 100000,
-        "stock": 400,
-        "category": "pakaian"
-    },
-    {
-        "id": uuid(),
-        "name": "jaket",
-        "price": 400000,
-        "stock": 400,
-        "category": "pakaian"
-    }
-]
-
-const header = Object.keys(dummy[0]);
 
 function Dashboard() {
-    const [isLogin, setIsLogin] = useState(false);
-    const [data, setData] = useState([])
+    const [data, setData] = useState({ headers: [], rows: [] });
     const [openCreateModal, setOpenCreateModal] = useState(false);
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
-    const [editedDataId, setEditedDataId] = useState({});
-    function handleDelete(id) {
-        const updateData = data.filter((v) => v.id !== id)
-        setData(updateData)
+    const [updatedDataId, setUpdatedDataId] = useState({});
+
+    const handleDelete = async (id) => {
+
+        const { code, msg, products } = await deleteProducts(data, id)
+        if (code === 200) {
+            setData(products)
+            alert(msg)
+        } else {
+            alert(msg)
+        }
     }
-    function handleEdit(id) {
-        setEditedDataId(id)
+    function handleUpdate(id) {
+        setUpdatedDataId(id)
         setOpenUpdateModal(true)
     }
 
-    useEffect(() => { setData(dummy) }, [])
+    const getData = async () => {
+        const { code, products, msg } = await getProducts()
+        if (code === 200) {
+            setData(products)
+        } else {
+            alert(msg)
+        }
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
     return <div style={{ margin: "50px" }}>
         <h1>Crud data</h1>
         <Button
@@ -56,13 +49,12 @@ function Dashboard() {
         <Table striped>
             <thead>
                 <tr>
-                    <th>no</th>
-                    {header.map((v, idx) => (<th key={idx}>{v}</th>))}
-                    <th>action</th>
+                    <th>No</th>
+                    {data.headers.map((header, idx) => (<th key={idx}>{header}</th>))}
                 </tr>
             </thead>
             <tbody>
-                {data.map((value, idx) => (
+                {data.rows.map((value, idx) => (
                     <tr key={idx}>
                         <th scope="row">
                             {idx + 1}
@@ -74,7 +66,7 @@ function Dashboard() {
                         <td>{value.stock}</td>
                         <td>{value.category}</td>
 
-                        <td><Button className="btn-info" onClick={() => handleEdit(value.id)}>edit</Button></td>
+                        <td><Button className="btn-info" onClick={() => handleUpdate(value.id)}>edit</Button></td>
                         <td><Button className="btn-danger" onClick={() => handleDelete(value.id)}>delete</Button></td>
                     </tr>
                 ))}
@@ -96,8 +88,9 @@ function Dashboard() {
             <ModalBody>
                 <UpdateForm
                     data={data}
+                    setData={setData}
                     setOpenModal={setOpenUpdateModal}
-                    editedDataId={editedDataId}
+                    updatedDataId={updatedDataId}
                 />
             </ModalBody>
         </Modal>

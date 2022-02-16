@@ -16,10 +16,10 @@ function Nav() {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul className="nav-collapse-style nav-menu-container navbar-nav">
                     <li className="navbar-item nav-menu-item">
-                        <Link className="navbar-item nav-menu-item" to="/dashboard">Dashboard</Link>
+                        <Link className="link-style" to="/dashboard">Dashboard</Link>
                     </li>
                     <li className="navbar-item nav-menu-item">
-                        <Link to="/catalog">Catalog</Link>
+                        <Link className="link-style" to="/catalog">Catalog</Link>
                     </li>
                 </ul>
             </div>
