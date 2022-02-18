@@ -1,0 +1,18 @@
+@import '../variable.scss';
+
+.bottom-container{
+    background-color: #3999b1;
+    padding: 50px 0 20px;
+    text-align: center;
+    margin-top: 100px;
+    .footer-link{
+        margin:30px;
+        text-decoration: none;
+        color: rgb(231, 231, 205);
+      }
+      .copyright-footer{
+        font-size: 0.75rem;
+        color:black;
+        margin: 20px 0 20px 0;
+      }
+}

@@ -89,8 +89,8 @@ function Dashboard() {
         </Table>
 
         {/* modal create*/}
-        <Modal isOpen={openCreateModal} toggle={() => setOpenCreateModal(!openCreateModal)}>
-            <ModalHeader>create data</ModalHeader>
+        <Modal className="modal-crud-container" isOpen={openCreateModal} toggle={() => setOpenCreateModal(!openCreateModal)}>
+            <ModalHeader className="header-modal-table">create data</ModalHeader>
             <ModalBody>
                 <NewForm
                     data={data}
@@ -102,8 +102,8 @@ function Dashboard() {
             </ModalBody>
         </Modal>
         {/* modal update*/}
-        <Modal isOpen={openUpdateModal} toggle={() => setOpenUpdateModal(!openUpdateModal)}>
-            <ModalHeader>update data</ModalHeader>
+        <Modal className="modal-crud-container" isOpen={openUpdateModal} toggle={() => setOpenUpdateModal(!openUpdateModal)}>
+            <ModalHeader className="header-modal-table">update data</ModalHeader>
             <ModalBody>
                 <UpdateForm
                     data={data}

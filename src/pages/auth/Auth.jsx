@@ -22,7 +22,7 @@ const AuthPages = () => {
                     currentContainer ?
                         <div className={`card-register `}>
                             <RegPages setCurrentContainer={setCurrentContainer} />
-                            <p className="text-center">Have an account?
+                            <p className="text-center have-acount-text">Have an account?
                                 <button className="login-link" onClick={() => setCurrentContainer(false)}>Log In</button>
                             </p>
                         </div> :

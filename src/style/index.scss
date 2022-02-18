@@ -5,7 +5,12 @@
 @import './variable.scss';
 
 //component
+//navbar
 @import './component/navbar.scss';
+//modal detail
+@import './component/detail-modal.scss';
+//footer
+@import './component/footer.scss';
 
 //button action
 @import './component/button-action.scss';
@@ -16,13 +21,20 @@
 //catalog pages
 @import './pages/catalog.scss';
 
+//error page
+@import './pages/error.scss';
+
+//modal dashboard
+@import './component/modal-crud.scss';
+
+ 
 body {
   margin: 0px;
 }
 .App{
   position: absolute;
   font-family: $nunito;
-  background-color: $background;
+  background-color: rgb(231, 231, 205);
   height: 100 vh;
   width: 100%;
 }

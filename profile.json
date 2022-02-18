@@ -17,6 +17,15 @@
       "phonenumber": "811167540",
       "hashedPassword": "$2a$10$CwTycUXWue0Thq9StjUM0uDuLhv5HLR6NolzHfzzeGFS7ckdDryDK",
       "joindate": "2/18/2022"
+    },
+    {
+      "id": "65f9d2ea-1c78-4621-a5f0-a4c655ebcecc",
+      "username": "arbasihlu",
+      "fullname": "ario baskoro",
+      "address": "jalanin aja dulu",
+      "phonenumber": "8333333323",
+      "hashedPassword": "$2a$10$CwTycUXWue0Thq9StjUM0uyfT1lOc0C37tm5Ziyz5OC81R4IqE4r6",
+      "joindate": "2/18/2022"
     }
   ]
 }

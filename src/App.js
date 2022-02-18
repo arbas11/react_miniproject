@@ -12,6 +12,7 @@ import {
   Navigate,
   Outlet
 } from "react-router-dom";
+import Footer from './component/Footer';
 
 function RequireAuth() {
   let auth = sessionStorage.getItem('logged');
@@ -44,6 +45,7 @@ function App() {
           <Route path="*" element={<Errorpage />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

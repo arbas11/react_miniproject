@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getProducts } from "../../service/product";
 import Detail from "../../component/DetailModal";
-import { Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Modal, ModalBody } from 'reactstrap';
 // import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Table } from 'reactstrap';
 
 function Catalog() {
@@ -23,25 +23,24 @@ function Catalog() {
     useEffect(() => {
         getData()
     }, [])
-    return (<section id="main-section" className="main-content row">
+    return (<section className="main-content catalog-container row">
         {data.rows.map((value, idx) => (
             <div key={idx} className="item-card card col-lg-3 col-md-4 col-sm-6 col-xs-6">
                 <div className="item-header">
-                    <span id='artistName2' className="brand-name">{value.name}</span>
+                    <span className="brand-name">{value.name}</span>
                 </div>
                 <span id='itemImg2'>
                     <img src={value.pictureURL} className="item-images img-fluid card-img-top" alt="Product" />
                 </span>
                 <span className="item-footer">
-                    <span id='itemTitle2' className="item-name">{value.category}</span>
-                    <span id='itemPrice2' className="price-tag">Rp {value.price},-</span>
+                    <span className="item-name">{value.category}</span>
+                    <span className="price-tag">Rp {value.price},-</span>
                 </span>
                 <button className="btn-action-cancel" onClick={() => handleDetail(value)}>Detail</button>
             </div>
         ))}
         {/* product detail modal */}
         <Modal isOpen={openProductModal} toggle={() => setOpenProductModal(!openProductModal)}>
-            <ModalHeader>product detail</ModalHeader>
             <ModalBody>
                 <Detail
                     data={productData}

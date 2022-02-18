@@ -1,0 +1,65 @@
+@import '../variable.scss';
+
+.modal-fade-show{
+    border-radius: 20px;
+}
+.modal-dialog{
+    background-color: #f5f5ac;
+    border-radius: 20px;
+}
+.modal-content{
+    background-color: #f5f5ac !important;
+    border-radius: 20px !important;
+}
+
+.modal-body{
+    background-color: #f5f5ac;
+    border-radius: 20px;
+}
+
+.modal-back{
+    background-color: #f5f5ac;
+}
+.modal-card-detail{
+    border-style: none !important;
+    .card-body{
+        background-color: #f5f5ac;
+    }
+    .detail-name{
+        color: #3999b1;
+        font-family: $logofont;
+        display: flex;
+        justify-content: center;
+        font-size: 3em;
+    }
+   
+    .detail-img{
+        width: 466px;
+        height: 466px;
+        background-color: transparent;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1 solid black;
+        box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
+        -webkit-box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
+        -moz-box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
+    }
+    .detail-category{
+        color: grey;
+        margin-bottom: 10px;
+     }
+     .detail-description{
+        color: black;
+        margin-bottom: 10px;
+    }
+    .modal-detail-btn{
+        display: flex;
+        justify-content: space-between;
+        .btn-action-cancel{
+            @include button-action(black, white, white, rgb(240, 240, 240), rgb(240, 240, 240), black);
+        }
+        .btn-submit{
+            @include button-action($bluebtnbor, $bluebtngrad1, $bluebtngrad2, $bluebtnhov, $bluebtnhov2, white);
+        }
+    }
+}

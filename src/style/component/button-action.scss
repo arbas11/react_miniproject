@@ -23,8 +23,6 @@
 .btn-action-cancel{
     @include button-action(black, white, white, rgb(240, 240, 240), rgb(240, 240, 240), black);
 }
-.btn-submit{
-    @include button-action($bluebtnbor, $bluebtngrad1, $bluebtngrad2, $bluebtnhov, $bluebtnhov2, white);
-}
+
 
 

@@ -1,4 +1,6 @@
+@import '../variable.scss';
 .main-content{
+    font-family: $poppins;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,47 +8,48 @@
     height: 100%;
     margin: 0;
     background-color: transparent !important;
-  }
-  
-  .item-card{
-    border-radius: 20px;
-    padding: 0 5px;
-    border-style: none;
-    margin: 30px 5px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-  
-  }
-  .item-header{
-    background-color: transparent;
-    text-align: center;
-    display: inline;
-    font-size: 1.1em;
-    font-weight: 400;
-    margin-bottom: 30px;
-    margin-top: 10px;
+    .item-card{
+      border-radius: 20px;
+      padding: 0 5px;
+      border-style: none;
+      margin: 30px 5px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
     
+    }
+    .item-header{
+      color:#3999b1;
+      background-color: transparent;
+      text-align: center;
+      display: inline;
+      font-size: 1.1em;
+      font-weight: 400;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      
+    }
+    .item-images{
+      background-color: transparent;
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1 solid black;
+      box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
+      -webkit-box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
+      -moz-box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
+    }
+    .item-footer{
+      background-color: transparent;
+      text-align: center;
+      display: flex;
+      margin-top: 40px;
+      flex-direction: column;
+      font-size: 0.8em;
+      margin-bottom: 20px;
+    }
   }
-  .item-images{
-    background-color: transparent;
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 1 solid black;
-    box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
-    -webkit-box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
-    -moz-box-shadow: 3px 3px 19px -6px rgba(0,0,0,1);
-  }
-  .item-footer{
-    background-color: transparent;
-    text-align: center;
-    display: flex;
-    margin-top: 40px;
-    flex-direction: column;
-    font-size: 0.8em;
   
-  }
