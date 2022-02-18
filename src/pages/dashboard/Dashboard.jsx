@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Modal, ModalBody, ModalHeader, Table } from 'reactstrap';
+import { Modal, ModalBody, ModalHeader, Table } from 'reactstrap';
 import NewForm from "./create";
 import UpdateForm from "./Update"
 import { deleteProducts, getProducts } from "../../service/product";
+import ButtonAction from "../../component/ButtonAction";
 
 
 function Dashboard() {
@@ -12,13 +12,16 @@ function Dashboard() {
     const [openCreateModal, setOpenCreateModal] = useState(false);
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const [updatedDataId, setUpdatedDataId] = useState({});
+    const [isDone, setIsDone] = useState(false);
+    const [whatIsDone, setWhatIsDone] = useState("");
 
     const handleDelete = async (id) => {
 
         const { code, msg, products } = await deleteProducts(data, id)
         if (code === 200) {
             setData(products)
-            alert(msg)
+            setIsDone(true)
+            setWhatIsDone('delete')
         } else {
             alert(msg)
         }
@@ -41,11 +44,23 @@ function Dashboard() {
         getData()
     }, [])
 
+
+
     return <div style={{ margin: "50px" }}>
-        <h1>Crud data</h1>
-        <Button
-            color="primary"
-            onClick={() => setOpenCreateModal(true)}>create data</Button>
+        {/* modal succesfull */}
+        {isDone &&
+            <Modal isOpen={isDone} toggle={() => setIsDone(!isDone)}>
+                {whatIsDone === "update" &&
+                    <ModalHeader>Update Data</ModalHeader>}
+                {whatIsDone === "create" &&
+                    <ModalHeader>Create Data</ModalHeader>}
+                {whatIsDone === "delete" &&
+                    <ModalHeader>Delete Data</ModalHeader>}
+                <ModalBody>sucessfully!!
+                </ModalBody>
+            </Modal>}
+        <h1>Product Table</h1>
+        <ButtonAction what="create data" todo={setOpenCreateModal} doit={true} />
         <Table striped>
             <thead>
                 <tr>
@@ -65,20 +80,24 @@ function Dashboard() {
                         <td>{value.price}</td>
                         <td>{value.stock}</td>
                         <td>{value.category}</td>
-
-                        <td><Button className="btn-info" onClick={() => handleUpdate(value.id)}>edit</Button></td>
-                        <td><Button className="btn-danger" onClick={() => handleDelete(value.id)}>delete</Button></td>
+                        <td>{value.description}</td>
+                        <td><ButtonAction what="edit" todo={handleUpdate} doit={value.id} /></td>
+                        <td><ButtonAction what="delete" todo={handleDelete} doit={value.id} /></td>
                     </tr>
                 ))}
             </tbody>
         </Table>
+
         {/* modal create*/}
         <Modal isOpen={openCreateModal} toggle={() => setOpenCreateModal(!openCreateModal)}>
             <ModalHeader>create data</ModalHeader>
             <ModalBody>
                 <NewForm
                     data={data}
+                    setData={setData}
                     setOpenModal={setOpenCreateModal}
+                    isDone={setIsDone}
+                    setWhatIsDone={setWhatIsDone}
                 />
             </ModalBody>
         </Modal>
@@ -91,6 +110,8 @@ function Dashboard() {
                     setData={setData}
                     setOpenModal={setOpenUpdateModal}
                     updatedDataId={updatedDataId}
+                    isDone={setIsDone}
+                    setWhatIsDone={setWhatIsDone}
                 />
             </ModalBody>
         </Modal>

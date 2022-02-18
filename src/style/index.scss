@@ -1,0 +1,28 @@
+@import './App.scss';
+@import './scss/style.scss';
+
+//variables
+@import './variable.scss';
+
+//component
+@import './component/navbar.scss';
+
+//button action
+@import './component/button-action.scss';
+
+//auth pages
+@import './pages/auth.scss';
+
+//catalog pages
+@import './pages/catalog.scss';
+
+body {
+  margin: 0px;
+}
+.App{
+  position: absolute;
+  font-family: $nunito;
+  background-color: $background;
+  height: 100 vh;
+  width: 100%;
+}

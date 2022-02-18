@@ -1,12 +1,16 @@
-import { React, useState, useEffect } from 'react'
-import { Button, Container, FormFeedback, Input } from 'reactstrap'
+import { React } from 'react'
+import { Button, FormFeedback, Input } from 'reactstrap'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { authRegister } from '../../service/auth'
+import { FcHome, FcIphone, FcLock } from 'react-icons/fc';
+
 
 const validationSchema = yup.object().shape({
-    email: yup.string().email().required(),
-    username: yup.string().min(8).required(),
+    username: yup.string().min(6).required(),
+    fullname: yup.string().required(),
+    address: yup.string().max(255).required(),
+    phonenumber: yup.string().min(9).matches(/^8[1-9][0-9]*/, 'Phone number is not valid'),
     password: yup.string().min(8).required(),
     retypePassword: yup.string()
         .oneOf([yup.ref('password'), null], 'Passwords must match'),
@@ -14,8 +18,10 @@ const validationSchema = yup.object().shape({
 const RegPages = ({ setCurrentContainer }) => {
     const formik = useFormik({
         initialValues: {
-            email: '',
             username: '',
+            fullname: '',
+            address: '',
+            phonenumber: '',
             password: '',
             retypePassword: ''
         },
@@ -33,33 +39,68 @@ const RegPages = ({ setCurrentContainer }) => {
         }
     }
     return (
-        (<Container className="container-register">
-            <div>Register</div>
-            <form onSubmit={formik.handleSubmit}>
-                {
-                    Object.keys(formik.initialValues).map((key, index) => (
-                        <div key={index} className="row-input">
-                            <Input
-                                type={key === "password" || key === "retypePassword" ? "password" : "text"}
-                                id={key}
-                                name={key}
-                                placeholder={key}
-                                value={formik.values[key]}
-                                onChange={formik.handleChange}
-                                invalid={formik.touched[key] && Boolean(formik.errors[key])}
-                            />
+        <div className="maincontainer">
+            <div className="container">
+
+                <div className="card bg-light">
+                    <article className="card-body mx-auto" style={{ maxWidth: "400px" }}>
+                        <h4 className="card-title mt-3 text-center">Create Account</h4>
+                        <p className="text-center">Get started with your free account</p>
+                        <form onSubmit={formik.handleSubmit}>
                             {
-                                formik.touched[key] && Boolean(formik.errors[key]) &&
-                                <FormFeedback className="error-feedback">{formik.errors[key]}</FormFeedback>
+                                Object.keys(formik.initialValues).map((key, index) => (
+                                    <div key={index} className="row-input form-group input-group">
+                                        {key === "phonenumber" &&
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text"><FcIphone /></span>
+                                                <Input className="custom-select" style={{ maxWidth: "65px" }} value={+62} />
+                                            </div>}
+                                        {key === "password" &&
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text"> <FcLock /></span>
+                                            </div>
+                                        }
+                                        {key === "username" &&
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text"> <i className="fa fa-user"></i> </span>
+                                            </div>}
+                                        {key === "repassword" &&
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text"> <FcLock /></span>
+                                            </div>}
+                                        {key === "retypePassword" &&
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text"> <FcLock /></span>
+                                            </div>}
+                                        {key === "address" &&
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text"><FcHome /></span>
+                                            </div>}
+                                        <Input
+                                            type={key === "password" || key === "retypePassword" ? "password" : "text"}
+                                            id={key}
+                                            name={key}
+                                            placeholder={key}
+                                            value={formik.values[key]}
+                                            onChange={formik.handleChange}
+                                            invalid={formik.touched[key] && Boolean(formik.errors[key])}
+                                        />
+                                        {
+                                            formik.touched[key] && Boolean(formik.errors[key]) &&
+                                            <FormFeedback className="error-feedback">{formik.errors[key]}</FormFeedback>
+                                        }
+                                    </div>
+                                ))
                             }
-                        </div>
-                    ))
-                }
-                <Button className="btn-submit" type="submit">
-                    Register
-                </Button>
-            </form>
-        </Container >)
+                            <Button className="btn-submit btn btn-primary btn-block" type="submit">
+                                Register
+                            </Button>
+                        </form>
+                    </article>
+                </div>
+            </div>
+
+        </div>
     );
 }
 

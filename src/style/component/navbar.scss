@@ -1,0 +1,25 @@
+@import '../variable.scss';
+
+.header-container{
+    background-color: $navbar;
+    .logo-style{
+        font-size: 3rem;
+        font-family: $logofont;
+      }
+    .nav-menu-container{
+        margin-left: auto;
+        padding: 0;
+        .nav-menu-item{
+            margin-left: 40px;
+            color: $fontprimary !important;
+        }
+    }
+    .nav-collapse-style{
+        display: flex;
+        align-items: flex-end;
+
+    }
+    .logging-btn{
+        @include buttonstyle();
+    }
+  }

@@ -1,31 +1,56 @@
-import '../App.css';
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink
+} from 'reactstrap'
 
-function Nav() {
-    return (<header className="header-container navbar navbar-expand-md">
-        <nav className="container">
-            <Link to="/catalog" className="logo-style navbar-brand">Shop.com</Link>
-            <button className="nav-btn navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <svg height="20" width="20">
-                    <circle cx="11" cy="11" r="10" fill="#483434
-            " />
-                </svg>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <ul className="nav-collapse-style nav-menu-container navbar-nav">
-                    <li className="navbar-item nav-menu-item">
-                        <Link className="link-style" to="/dashboard">Dashboard</Link>
-                    </li>
-                    <li className="navbar-item nav-menu-item">
-                        <Link className="link-style" to="/catalog">Catalog</Link>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header >
+function NavComp() {
+    const [isOpen, setIsOpen] = useState(false)
+    const [isLogin, setIsLogin] = useState(sessionStorage.getItem('logged'))
+    const navigate = useNavigate()
+
+    function handleLogout() {
+        sessionStorage.removeItem('logged')
+        setIsLogin(false)
+        navigate('/')
+    }
+    function handleLogin() {
+        navigate('/')
+    }
+
+    return (
+        <header>
+            <Navbar className="header-container" light expand="md">
+                <NavbarBrand href="/catalog" className="logo-style">Shop.com</NavbarBrand>
+                <NavbarToggler className="toggler" onClick={() => setIsOpen(!isOpen)} />
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="nav-collapse-style nav-menu-container ml-auto" navbar>
+                        {!isLogin ?
+                            <NavItem>
+                                <a href='#' className="nav-menu-item logging-btn" onClick={handleLogin}>Login</a>
+                            </NavItem> :
+                            <NavItem>
+                                <NavLink className="nav-menu-item" href="/dashboard">Dashboard</NavLink>
+                            </NavItem>}
+                        <NavItem>
+                            <NavLink className="nav-menu-item" href="/catalog">Catalog</NavLink>
+                        </NavItem>
+                        {isLogin ?
+                            <NavItem>
+                                <a href='#' className="nav-menu-item logging-btn" onClick={handleLogout}>Logout</a>
+                            </NavItem> : null}
+                    </Nav>
+                </Collapse>
+            </Navbar>
+        </header >
+
     )
 }
 
-export default Nav;
+export default NavComp;

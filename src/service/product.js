@@ -21,7 +21,6 @@ export const createProducts = async (prevData, form) => {
 
 export const updateProducts = async (prevData, form, id) => {
     try {
-        console.log(form)
         prevData.rows.map((row, index) => (row.id === id ? prevData.rows[index] = form : { ...row }))
         const { data } = await axios.post(`http://localhost:3001/data`, (prevData))
         return { code: 200, status: "success", products: data, msg: "Product Edited" }

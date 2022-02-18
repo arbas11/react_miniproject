@@ -19,7 +19,7 @@ const initialValue = {
     stock: 0,
     category: ""
 }
-const UpdateForm = ({ data, setOpenModal, updatedDataId, setData }) => {
+const UpdateForm = ({ data, setOpenModal, updatedDataId, setData, isDone, setWhatIsDone }) => {
     const [form, setForm] = useState(initialValue);
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,7 +27,8 @@ const UpdateForm = ({ data, setOpenModal, updatedDataId, setData }) => {
         if (code === 200) {
             setData(products)
             setOpenModal(false)
-            alert(msg)
+            isDone(true)
+            setWhatIsDone('update')
         } else {
             alert(msg)
         }
@@ -59,11 +60,9 @@ const UpdateForm = ({ data, setOpenModal, updatedDataId, setData }) => {
                         ))}
                     </>
                     <Row>
-                        <Col>
-                            <Button color="primary" type="submit"> Submit</Button>
-                        </Col>
-                        <Col>
-                            <Button onClick={() => setOpenModal(false)} color="danger"> Cancel </Button>
+                        <Col className="modal-btn">
+                            <Button className="btn-submit" type="submit"> Submit</Button>
+                            <Button onClick={() => setOpenModal(false)} className="btn-action-cancel"> Cancel </Button>
                         </Col>
                     </Row>
                 </Form>

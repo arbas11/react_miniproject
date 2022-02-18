@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&family=Poppins:wght@200;300;400&family=Yellowtail&display=swap');
+@import url(//db.onlinewebfonts.com/c/0bbba3e6da511a469bc943bdf02310e7?family=Lucida+Grande);
+
+//fonts
+$poppins: 'Poppins', sans-serif;
+$nunito: 'Nunito', sans-serif;
+$logofont: 'Yellowtail', cursive; 
+
+
+//color
+$colortest: red;
+$navbar: #98B4AA;
+$primary: #B4CFB0;
+$fontprimary: #495371;
+$background: #eaedf0;
+$bluebtnhov: rgb(26,175,238);
+$bluebtnhov2: rgb(4,132,217);
+$bluebtnbor: #3e65b3;
+$bluebtngrad1: #62a6ed;
+$bluebtngrad2: #4b78d6;
+
+
+//button
+@mixin buttonstyle() {
+        box-shadow: 0px -50px 0px -50px #1c1b18;
+        background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+        background-color:#D8D2CB;
+        border-radius:38px;
+        display:inline-block;
+        cursor:pointer;
+        color:#505739;
+        font-family:Arial;
+        font-size:14px;
+        padding:8px 19px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #ffffff;
+        &:hover {
+            background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+            background-color:#ccc2a6;
+        &:active {
+            position:relative;
+            top:1px;
+        }
+    }
+}
+@mixin button-action($col1, $col2, $col3, $col4, $col5, $col6) {
+        font-size: 12px;
+        font-family: "Lucida Grande";
+        text-decoration: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        color: $col6;
+        display: inline-block;
+        padding: 0.4em 1em;
+        border: 0.1em solid $col1;
+        border-radius: 0.38em;
+        background-image: linear-gradient($col2, $col3); 
+      &:hover {
+        background-image: linear-gradient($col4, $col5); 
+      }
+}

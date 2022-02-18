@@ -1,0 +1,30 @@
+@import '../variable.scss';
+
+.btn-action-edit{
+    @include button-action($bluebtnbor, $bluebtngrad1, $bluebtngrad2, $bluebtnhov, $bluebtnhov2, white);
+}
+.btn-action-delete{
+    @include button-action(black, white, white, rgb(240, 240, 240), rgb(240, 240, 240), black);
+}
+.btn-action-create{
+    @include button-action(black, rgb(160, 255, 211), rgb(160, 255, 211), rgb(137, 241, 193),  rgb(137, 241, 193), black);
+}
+
+.modal-btn{
+    display: flex;
+    justify-content: space-around;
+    .btn-action-cancel{
+        @include button-action(black, white, white, rgb(240, 240, 240), rgb(240, 240, 240), black);
+    }
+    .btn-submit{
+        @include button-action($bluebtnbor, $bluebtngrad1, $bluebtngrad2, $bluebtnhov, $bluebtnhov2, white);
+    }
+}
+.btn-action-cancel{
+    @include button-action(black, white, white, rgb(240, 240, 240), rgb(240, 240, 240), black);
+}
+.btn-submit{
+    @include button-action($bluebtnbor, $bluebtngrad1, $bluebtngrad2, $bluebtnhov, $bluebtnhov2, white);
+}
+
+

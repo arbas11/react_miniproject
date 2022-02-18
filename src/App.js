@@ -1,9 +1,9 @@
-import './App.css';
 import AuthPages from './pages/auth/Auth';
-import Nav from './component/nav';
+import NavComp from './component/nav';
 import Dashboard from './pages/dashboard/Dashboard';
 import Catalog from './pages/catalog/catalog';
 import Errorpage from './pages/Error';
+import './style/App.scss'
 import {
   BrowserRouter,
   Routes,
@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <NavComp />
         <Routes>
           <Route path="/" element={<AuthPages />} />
           {/* PUBLIC ROUTES */}

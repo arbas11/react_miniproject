@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Button,
     Row,
@@ -10,26 +10,32 @@ import {
 } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 import { createProducts } from '../../service/product';
-
-const num = Math.floor((Math.random() * 100000) + 1);
-const initialValue = {
-    id: uuid(),
-    name: "",
-    price: 0,
-    stock: 0,
-    category: "",
-    pictureURL: `https://loremflickr.com/200/200/${num}`
+const initialValue = function initial() {
+    const num = Math.floor((Math.random() * 100000) + 1);
+    const initialValue = {
+        id: uuid(),
+        name: "",
+        price: 0,
+        stock: 0,
+        category: "",
+        description: "",
+        pictureURL: `https://loremflickr.com/200/200/${num}`
+    }
+    return initialValue
 }
-const NewForm = ({ data, setOpenModal }) => {
+const NewForm = ({ data, setData, setOpenModal, isDone, setWhatIsDone }) => {
     const [form, setForm] = useState(initialValue);
-
+    useEffect(() => {
+        initialValue();
+    })
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { code, msg, products } = await createProducts(data, form)
         if (code === 200) {
-            setForm(products)
+            setData(products);
             setOpenModal(false);
-            alert(msg)
+            isDone(true);
+            setWhatIsDone('create');
         } else {
             alert(msg)
         }
@@ -42,6 +48,7 @@ const NewForm = ({ data, setOpenModal }) => {
                     <>
                         {Object.keys(form).map((key, idx) => (
                             key !== 'id' &&
+
                             <FormGroup key={idx}>
                                 <Label>{key}</Label>
                                 <Input
@@ -57,11 +64,9 @@ const NewForm = ({ data, setOpenModal }) => {
                         ))}
                     </>
                     <Row>
-                        <Col>
-                            <Button color="primary" type="submit"> Submit</Button>
-                        </Col>
-                        <Col>
-                            <Button onClick={() => setOpenModal(false)} color="danger"> Cancel </Button>
+                        <Col className="modal-btn">
+                            <Button className="btn-submit" type="submit"> Submit</Button>
+                            <Button onClick={() => setOpenModal(false)} className="btn-action-cancel"> Cancel </Button>
                         </Col>
                     </Row>
                 </Form>
