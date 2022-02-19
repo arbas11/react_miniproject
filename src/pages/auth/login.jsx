@@ -68,10 +68,10 @@ const Login = ({ setCurrentContainer }) => {
                                     </div>
                                 ))
                             }
-                            <button className="btn-submit btn btn-primary btn-block" type="submit">
+                            <button className="btn-login btn-block" type="submit">
                                 Login
                             </button>
-                            <button type="button" className="btn-submit btn btn-primary btn-block" onClick={() => setCurrentContainer(true)}>
+                            <button type="button" className="btn-create btn-block" onClick={() => setCurrentContainer(true)}>
                                 Create Account
                             </button>
                         </form>

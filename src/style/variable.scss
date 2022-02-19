@@ -18,6 +18,9 @@ $bluebtnhov2: rgb(4,132,217);
 $bluebtnbor: #3e65b3;
 $bluebtngrad1: #62a6ed;
 $bluebtngrad2: #4b78d6;
+$footer: #3999b1;
+$backdrop: rgb(231, 231, 205);
+$modalbackground: #f5f5ac;
 
 
 //button
@@ -49,13 +52,13 @@ $bluebtngrad2: #4b78d6;
         text-decoration: none;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
-        color: $col6;
+        color: $col6 !important;
         display: inline-block;
         padding: 0.4em 1em;
-        border: 0.1em solid $col1;
+        border: 0.1em solid $col1 !important;
         border-radius: 0.38em;
-        background-image: linear-gradient($col2, $col3); 
+        background-image: linear-gradient($col2, $col3) !important; 
       &:hover {
-        background-image: linear-gradient($col4, $col5); 
+        background-image: linear-gradient($col4, $col5) !important; 
       }
 }

@@ -36,7 +36,7 @@ function Catalog() {
                     <span className="item-name">{value.category}</span>
                     <span className="price-tag">Rp {value.price},-</span>
                 </span>
-                <button className="btn-action-cancel" onClick={() => handleDetail(value)}>Detail</button>
+                <button className="btn-action-detail" onClick={() => handleDetail(value)}>Detail</button>
             </div>
         ))}
         {/* product detail modal */}

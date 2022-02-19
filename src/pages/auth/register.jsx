@@ -53,7 +53,7 @@ const RegPages = ({ setCurrentContainer }) => {
                                         {key === "phonenumber" &&
                                             <div className="input-group-prepend">
                                                 <span className="input-group-text"><FcIphone /></span>
-                                                <Input className="custom-select" style={{ maxWidth: "65px" }} value={+62} />
+                                                <Input style={{ maxWidth: "65px" }} value={+62} />
                                             </div>}
                                         {key === "password" &&
                                             <div className="input-group-prepend">
@@ -92,7 +92,7 @@ const RegPages = ({ setCurrentContainer }) => {
                                     </div>
                                 ))
                             }
-                            <Button className="btn-submit btn btn-primary btn-block" type="submit">
+                            <Button className="btn-reg btn-block" type="submit">
                                 Register
                             </Button>
                         </form>

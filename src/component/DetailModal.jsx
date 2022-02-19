@@ -20,8 +20,8 @@ const Detail = ({ data, setOpenModal }) => {
                     <CardText className="detail-description">{data.description}</CardText>
                     <CardText className="detail-price">Rp {data.price},-</CardText>
                     <div className="modal-detail-btn">
-                        <Button className="btn-submit" onClick={() => setOpenModal(false)} >Add to cart</Button>
-                        <Button className="btn-action-cancel" onClick={() => setOpenModal(false)}> Cancel </Button>
+                        <Button className="btn-submit-detail" onClick={() => setOpenModal(false)} >Add to cart</Button>
+                        <Button className="btn-cancel-detail" onClick={() => setOpenModal(false)}> Cancel </Button>
                     </div>
                 </CardBody>
             </ div>

@@ -63,6 +63,24 @@
         "category": "women bag",
         "description": "this luxurious good that will make you look fantastic and your husband broke",
         "pictureURL": "https://5.imimg.com/data5/NM/II/MY-3020503/ladies-hand-bags1-500x500.jpg"
+      },
+      {
+        "id": "8999a071-d81a-481a-962f-c26726018bf4",
+        "name": "Louis vuitton bag",
+        "price": "15000000",
+        "stock": "30",
+        "category": "Luxury Bag",
+        "description": "this is a louis vuitton bag",
+        "pictureURL": "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-locky-bb-monogram-canvas-handbags--M44080_PM2_Front%20view.jpg"
+      },
+      {
+        "id": "99c174a6-020e-4ea2-96e7-2be387f452e4",
+        "name": "Louis vuitton bag",
+        "price": "20000000",
+        "stock": "20",
+        "category": "Luxury bag",
+        "description": "luxurious and prestigious bag will make you look rich and awesome!",
+        "pictureURL": "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-keepall-bandouli%C3%A8re-55-damier-ebene-canvas-personalisation--N41414_PM2_Front%20view.jpg"
       }
     ]
   }

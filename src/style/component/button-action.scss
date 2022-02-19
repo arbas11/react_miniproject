@@ -9,6 +9,30 @@
 .btn-action-create{
     @include button-action(black, rgb(160, 255, 211), rgb(160, 255, 211), rgb(137, 241, 193),  rgb(137, 241, 193), black);
 }
+.btn-action-detail{
+    @include button-action(rgb(219, 168, 120), rgb(214, 180, 149), rgb(214, 180, 149), rgb(219, 168, 120),  rgb(219, 168, 120), black);
+}
+.btn-login {
+        @include button-action($footer, $footer, $footer, #22a7c9, #22a7c9, $modalbackground);
+        cursor: pointer;
+        box-shadow: none!important;
+        font-size: 15px;
+        padding: 10px 20px;
+}
+.btn-create {
+        @include button-action($backdrop, $backdrop, $backdrop, beige, beige, #3999b1);
+        cursor: pointer;
+        box-shadow: none!important;
+        font-size: 15px;
+        padding: 10px 20px;
+}
+.btn-reg {
+        @include button-action($footer, $footer, $footer, #22a7c9, #22a7c9, $modalbackground);
+        cursor: pointer;
+        box-shadow: none!important;
+        font-size: 15px;
+        padding: 10px 20px;
+}
 
 .modal-btn{
     display: flex;

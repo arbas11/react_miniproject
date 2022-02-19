@@ -55,10 +55,10 @@
     .modal-detail-btn{
         display: flex;
         justify-content: space-between;
-        .btn-action-cancel{
+        .btn-cancel-detail{
             @include button-action(black, white, white, rgb(240, 240, 240), rgb(240, 240, 240), black);
         }
-        .btn-submit{
+        .btn-submit-detail{
             @include button-action($bluebtnbor, $bluebtngrad1, $bluebtngrad2, $bluebtnhov, $bluebtnhov2, white);
         }
     }
