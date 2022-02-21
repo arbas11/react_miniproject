@@ -1,10 +1,10 @@
 import React from 'react'
 
-function ButtonAction({ what, todo, doit }) {
+function ButtonAction({ what, todo, toChange }) {
   return (
     <button
       className={`btn-action-${what}`}
-      onClick={() => todo(doit)}>{what}</button>
+      onClick={() => todo(toChange)}>{what}</button>
   )
 }
 export default ButtonAction

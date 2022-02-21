@@ -23,18 +23,18 @@ const initialValue = function initial() {
     }
     return initialValue
 }
-const NewForm = ({ data, setData, setOpenModal, isDone, setWhatIsDone }) => {
+const NewForm = ({ data, setData, setOpenModal, setIsDone, setWhatIsDone }) => {
     const [form, setForm] = useState(initialValue);
     useEffect(() => {
         initialValue();
-    })
+    }, [])
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { code, msg, products } = await createProducts(data, form)
         if (code === 200) {
             setData(products);
             setOpenModal(false);
-            isDone(true);
+            setIsDone(true);
             setWhatIsDone('create');
         } else {
             alert(msg)

@@ -19,16 +19,16 @@ const initialValue = {
     stock: 0,
     category: ""
 }
-const UpdateForm = ({ data, setOpenModal, updatedDataId, setData, isDone, setWhatIsDone }) => {
+const UpdateForm = ({ data, setOpenModal, updatedDataId, setData, setIsDone, setWhatIsDone }) => {
     const [form, setForm] = useState(initialValue);
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { code, msg, products } = await updateProducts(data, form, updatedDataId)
         if (code === 200) {
             setData(products)
-            setOpenModal(false)
-            isDone(true)
+            setIsDone(true)
             setWhatIsDone('update')
+            setOpenModal(false)
         } else {
             alert(msg)
         }

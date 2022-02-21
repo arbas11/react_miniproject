@@ -1,0 +1,16 @@
+.modal-delete{
+    .delete-header{
+        border-bottom: none !important;
+    }
+    .modal-delete-btn{
+        display: flex;
+        justify-content: space-around;
+        .btn-delete-sure{
+            @include button-action($bluebtnbor, $bluebtngrad1, $bluebtngrad2, $bluebtnhov, $bluebtnhov2, white);
+        }
+        .btn-delete-cancel{
+         
+            @include button-action(black, white, white, rgb(240, 240, 240), rgb(240, 240, 240), black);
+        }
+    }
+}

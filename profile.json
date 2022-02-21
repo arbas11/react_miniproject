@@ -8,6 +8,24 @@
       "phonenumber": "8170167540",
       "hashedPassword": "$2a$10$CwTycUXWue0Thq9StjUM0uDuLhv5HLR6NolzHfzzeGFS7ckdDryDK",
       "joindate": "2/18/2022"
+    },
+    {
+      "id": "f085c521-0051-444b-8a29-e6ce518133d0",
+      "username": "ariobasko",
+      "fullname": "ario baskoro",
+      "address": "jalan ini dan itu",
+      "phonenumber": "81900000000",
+      "hashedPassword": "$2a$10$CwTycUXWue0Thq9StjUM0uP.IuLDaehneKf2GLaxbhtDX0YqTeCBy",
+      "joindate": "2/21/2022"
+    },
+    {
+      "id": "7123b0b5-7b8a-4814-86d3-cf9f76a509dd",
+      "username": "aaaaaaaaa",
+      "fullname": "aaaaaaaaaaaa",
+      "address": "jalan jalansantai",
+      "phonenumber": "81723232323",
+      "hashedPassword": "$2a$10$CwTycUXWue0Thq9StjUM0uDuLhv5HLR6NolzHfzzeGFS7ckdDryDK",
+      "joindate": "2/21/2022"
     }
   ]
 }

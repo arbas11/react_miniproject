@@ -1,34 +1,36 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal, ModalBody, ModalHeader, Table } from 'reactstrap';
-import NewForm from "./create";
-import UpdateForm from "./Update"
-import { deleteProducts, getProducts } from "../../service/product";
+import { Modal, Table } from 'reactstrap';
+import { getProducts } from "../../service/product";
 import ButtonAction from "../../component/ButtonAction";
+import FormModal from "../../component/FormModal";
+import ModalNotif from "../../component/ModalNotif";
+import Delete from './Delete'
 
 
 function Dashboard() {
     const [data, setData] = useState({ headers: [], rows: [] });
-    const [openCreateModal, setOpenCreateModal] = useState(false);
-    const [openUpdateModal, setOpenUpdateModal] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
     const [updatedDataId, setUpdatedDataId] = useState({});
+    const [deleteDataId, setDeleteDataId] = useState({});
     const [isDone, setIsDone] = useState(false);
     const [whatIsDone, setWhatIsDone] = useState("");
+    const [openDeleteModal, setOpenDeleteModal] = useState(false)
+
 
     const handleDelete = async (id) => {
-
-        const { code, msg, products } = await deleteProducts(data, id)
-        if (code === 200) {
-            setData(products)
-            setIsDone(true)
-            setWhatIsDone('delete')
-        } else {
-            alert(msg)
-        }
+        setWhatIsDone('update')
+        setDeleteDataId(id)
+        setOpenDeleteModal(true)
     }
     function handleUpdate(id) {
+        setWhatIsDone('update')
         setUpdatedDataId(id)
-        setOpenUpdateModal(true)
+        setOpenModal(true)
+    }
+    function handleCreate() {
+        setOpenModal(true)
+        setWhatIsDone('create')
     }
 
     const getData = async () => {
@@ -48,19 +50,11 @@ function Dashboard() {
 
     return <div style={{ margin: "50px" }}>
         {/* modal succesfull */}
-        {isDone &&
-            <Modal isOpen={isDone} toggle={() => setIsDone(!isDone)}>
-                {whatIsDone === "update" &&
-                    <ModalHeader>Update Data</ModalHeader>}
-                {whatIsDone === "create" &&
-                    <ModalHeader>Create Data</ModalHeader>}
-                {whatIsDone === "delete" &&
-                    <ModalHeader>Delete Data</ModalHeader>}
-                <ModalBody>sucessfully!!
-                </ModalBody>
-            </Modal>}
+        <Modal isOpen={isDone} toggle={() => setIsDone(!isDone)}>
+            <ModalNotif whatIsDone={whatIsDone} />
+        </Modal>
         <h1>Product Table</h1>
-        <ButtonAction what="create data" todo={setOpenCreateModal} doit={true} />
+        <button className={`btn-action-create`} onClick={() => { handleCreate() }}>create</button>
         <Table striped>
             <thead>
                 <tr>
@@ -81,41 +75,36 @@ function Dashboard() {
                         <td>{value.stock}</td>
                         <td>{value.category}</td>
                         <td>{value.description}</td>
-                        <td><ButtonAction what="edit" todo={handleUpdate} doit={value.id} /></td>
-                        <td><ButtonAction what="delete" todo={handleDelete} doit={value.id} /></td>
+                        <td><ButtonAction what="edit" todo={handleUpdate} toChange={value.id} /></td>
+                        <td><ButtonAction what="delete" todo={handleDelete} toChange={value.id} /></td>
                     </tr>
                 ))}
             </tbody>
         </Table>
+        <Modal isOpen={openDeleteModal} toggle={() => setOpenDeleteModal(!openDeleteModal)}>
 
-        {/* modal create*/}
-        <Modal className="modal-crud-container" isOpen={openCreateModal} toggle={() => setOpenCreateModal(!openCreateModal)}>
-            <ModalHeader className="header-modal-table">create data</ModalHeader>
-            <ModalBody>
-                <NewForm
-                    data={data}
-                    setData={setData}
-                    setOpenModal={setOpenCreateModal}
-                    isDone={setIsDone}
-                    setWhatIsDone={setWhatIsDone}
-                />
-            </ModalBody>
+            <Delete
+                data={data}
+                setData={setData}
+                setOpenDeleteModal={setOpenDeleteModal}
+                deleteDataId={deleteDataId}
+                setIsDone={setIsDone}
+                whatIsDone={whatIsDone}
+                setWhatIsDone={setWhatIsDone} />
+
         </Modal>
-        {/* modal update*/}
-        <Modal className="modal-crud-container" isOpen={openUpdateModal} toggle={() => setOpenUpdateModal(!openUpdateModal)}>
-            <ModalHeader className="header-modal-table">update data</ModalHeader>
-            <ModalBody>
-                <UpdateForm
-                    data={data}
-                    setData={setData}
-                    setOpenModal={setOpenUpdateModal}
-                    updatedDataId={updatedDataId}
-                    isDone={setIsDone}
-                    setWhatIsDone={setWhatIsDone}
-                />
-            </ModalBody>
+        {/* modal create and update*/}
+        <Modal isOpen={openModal} toggle={() => setOpenModal(!openModal)}>
+
+            <FormModal
+                data={data}
+                setData={setData}
+                setOpenModal={setOpenModal}
+                updatedDataId={updatedDataId}
+                setIsDone={setIsDone}
+                whatIsDone={whatIsDone}
+                setWhatIsDone={setWhatIsDone} />
         </Modal>
     </div>
 }
-
 export default Dashboard;
