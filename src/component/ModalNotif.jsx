@@ -10,6 +10,8 @@ function ModalNotif({ whatIsDone }) {
                 <ModalHeader>Create Data</ModalHeader>}
             {whatIsDone === "delete" &&
                 <ModalHeader>Delete Data</ModalHeader>}
+            {whatIsDone === "delete profile" &&
+                <ModalHeader>Delete Profile</ModalHeader>}
             <ModalBody>sucessfully!!
             </ModalBody>
         </>

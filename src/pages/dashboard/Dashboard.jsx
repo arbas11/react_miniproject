@@ -81,6 +81,7 @@ function Dashboard() {
                 ))}
             </tbody>
         </Table>
+        {/* modal delete*/}
         <Modal isOpen={openDeleteModal} toggle={() => setOpenDeleteModal(!openDeleteModal)}>
 
             <Delete

@@ -17,6 +17,7 @@ function NavComp() {
 
     function handleLogout() {
         sessionStorage.removeItem('logged')
+        sessionStorage.removeItem('id')
         setIsLogin(false)
         navigate('/')
     }
@@ -35,9 +36,14 @@ function NavComp() {
                             <NavItem>
                                 <a href='#' className="nav-menu-item logging-btn" onClick={handleLogin}>Login</a>
                             </NavItem> :
-                            <NavItem>
-                                <NavLink className="nav-menu-item" href="/dashboard">Dashboard</NavLink>
-                            </NavItem>}
+                            <>
+                                <NavItem>
+                                    <NavLink className="nav-menu-item" href="/profile">Profile</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className="nav-menu-item" href="/dashboard">Dashboard</NavLink>
+                                </NavItem>
+                            </>}
                         <NavItem>
                             <NavLink className="nav-menu-item" href="/catalog">Catalog</NavLink>
                         </NavItem>
