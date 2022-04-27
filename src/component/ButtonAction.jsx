@@ -1,10 +1,16 @@
-import React from 'react'
+import React from "react";
 
-function ButtonAction({ what, todo, toChange }) {
+function ButtonAction({ what, todo, toChange, setProductData, value }) {
   return (
     <button
       className={`btn-action-${what}`}
-      onClick={() => todo(toChange)}>{what}</button>
-  )
+      onClick={() => {
+        todo(toChange);
+        setProductData(value);
+      }}
+    >
+      {what}
+    </button>
+  );
 }
-export default ButtonAction
+export default ButtonAction;

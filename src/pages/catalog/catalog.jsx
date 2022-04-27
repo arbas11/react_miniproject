@@ -14,8 +14,8 @@ function Catalog() {
     }
   };
 
-  function handleDetail(products) {
-    setProductData(products);
+  function handleDetail(product) {
+    setProductData(product);
     setOpenProductModal(true);
   }
   useEffect(() => {

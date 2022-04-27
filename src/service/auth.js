@@ -21,7 +21,6 @@ export const authRegister = async (req) => {
 };
 
 export const getProfileID = async (id, token) => {
-  //   try {
   const config = {
     method: "GET",
     url: `http://localhost:3001/merchant/${id}`,

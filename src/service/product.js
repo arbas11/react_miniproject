@@ -1,27 +1,43 @@
 import axios from "axios";
 
 export const getProducts = async () => {
-  // try {
   const result = await axios
     .post("http://localhost:3001/merchant/product")
     .then((response) => {
       return response;
     })
     .catch((e) => {
-      console.log(e.response, "error dari get all product service");
       return e.response;
     });
   return result;
-  //     return { code: 200, status: "success", products: data, msg: "get data sukses" }
-  // } catch (e) {
-  //     return { code: 400, status: "error", productsdata: null, msg: "Service Error" }
-  // }
+};
+export const getMerchantProducts = async (id, token) => {
+  const config = {
+    method: "GET",
+    url: `http://localhost:3001/merchant/${id}/product`,
+    headers: {
+      authorization: token,
+    },
+  };
+  const result = await axios(config)
+    .then((response) => {
+      return response;
+    })
+    .catch((e) => {
+      return e.response;
+    });
+  return result;
 };
 
-export const createProducts = async (prevData, form) => {
+export const createProducts = async (newData, id, token) => {
   try {
-    prevData.rows.push(form);
-    const { data } = await axios.post(`http://localhost:3001/data`, prevData);
+    const data = await axios.post(
+      `http://localhost:3001/merchant/${id}/product`,
+      newData,
+      {
+        headers: { authorization: token },
+      }
+    );
     return {
       code: 200,
       status: "success",
@@ -33,16 +49,19 @@ export const createProducts = async (prevData, form) => {
   }
 };
 
-export const updateProducts = async (prevData, form, id) => {
+export const updateProducts = async (form, id, prodid, token) => {
   try {
-    prevData.rows.map((row, index) =>
-      row.id === id ? (prevData.rows[index] = form) : { ...row }
+    const data = await axios.patch(
+      `http://localhost:3001/merchant/${id}/product/${prodid}`,
+      form,
+      {
+        headers: { authorization: token },
+      }
     );
-    const { data } = await axios.post(`http://localhost:3001/data`, prevData);
     return {
       code: 200,
       status: "success",
-      products: data,
+      product: data,
       msg: "Product Edited",
     };
   } catch (e) {
@@ -50,11 +69,16 @@ export const updateProducts = async (prevData, form, id) => {
   }
 };
 
-export const deleteProducts = async (prevData, id) => {
+export const deleteProducts = async (id, prodid, token) => {
   try {
-    const updatedRows = prevData.rows.filter((v) => id !== v.id);
-    prevData.rows = updatedRows;
-    const { data } = await axios.post(`http://localhost:3001/data`, prevData);
+    const config = {
+      method: "DELETE",
+      url: `http://localhost:3001/merchant/${id}/product/${prodid}`,
+      headers: {
+        authorization: token,
+      },
+    };
+    const data = await axios(config);
     return {
       code: 200,
       status: "success",

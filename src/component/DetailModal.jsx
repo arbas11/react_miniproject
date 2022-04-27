@@ -7,7 +7,7 @@ import {
   CardSubtitle,
   CardText,
 } from "reactstrap";
-const Detail = ({ data, setOpenModal }) => {
+const Detail = ({ data, setOpenModal, whatIsDone }) => {
   return (
     <Card className="modal-card-detail">
       <div className="modal-back">
@@ -31,7 +31,7 @@ const Detail = ({ data, setOpenModal }) => {
               className="btn-submit-detail"
               onClick={() => setOpenModal(false)}
             >
-              Add to cart
+              {whatIsDone === "edit product" ? "edit product" : "Add to cart"}
             </Button>
             <Button
               className="btn-cancel-detail"
